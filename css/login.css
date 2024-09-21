@@ -1,1 +1,114 @@
+:root {
+    --lighter: #ababab;
+    --light-0: #939393;
+    --light-1: #858585;
+    --light-2: #6d6d6d;
+    --light-3: #474747;
+    --light-4: #393939;
+    --light-5: #313131;
+    --dark-1: #2b2b2b;
+    --dark-2: #1f1f1f;
+    --dark-3: #181818;
+}
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--dark-2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#main {
+    border: 1px solid var(--dark-1);
+    border-radius: 15px;
+    background-color: var(--dark-3);
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 400px;
+}
+
+.input-area {
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.input-icon {
+    position: absolute;
+    padding: 0 10px;
+    background-color: var(--lighter);
+    top: calc(50% - 10px);
+    right: 3px;
+    font-size: 14px;
+    color: var(--light-3)
+}
+
+.login-input {
+    flex-grow: 1;
+    height: 38px;
+    padding: 8px;
+    font-size: 15px;
+    border: 1px solid var(--light-0);
+    background-color: var(--lighter);
+    color: var(--dark-3);
+    outline: none;
+    border-radius: 7px;
+}
+
+#loginBtn {
+    flex-grow: 1;
+    height: 38px;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid var(--light-0);
+    background-color: var(--lighter);
+    color: var(--dark-3);
+    outline: none;
+    border-radius: 7px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#loginBtn:hover {
+    background-color: var(--light-0);
+}
+
+#loginBtn:active {
+    border: 1px solid var(--light-1);
+    background-color: var(--light-1);
+}
+
+
+@media screen and (max-width: 620px) {
+    #main {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .input-icon {
+        display: none;
+    }
+}

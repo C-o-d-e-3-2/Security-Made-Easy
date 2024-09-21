@@ -1,0 +1,460 @@
+:root {
+    --lighter: #ababab;
+    --light-0: #939393;
+    --light-1: #858585;
+    --light-2: #6d6d6d;
+    --light-3: #474747;
+    --light-4: #393939;
+    --light-5: #313131;
+    --dark-1: #2b2b2b;
+    --dark-2: #1f1f1f;
+    --dark-3: #181818;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+#header,
+#main,
+#footer {
+    width: 100%;
+    padding: 15px 20px;
+}
+
+#header {
+    background-color: var(--dark-2);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgb(43, 43, 43, 0.5);
+}
+
+#main {
+    background-color: var(--dark-3);
+    color: white;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#footer {
+    background-color: var(--dark-2);
+    color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    border-top: 1px solid rgba(43, 43, 43, 0.5);
+}
+
+#columnDivider {
+    width: 2px;
+    background-color: var(--light-4);
+    align-self: top;
+}
+
+#baseDivider {
+    height: 2px;
+    background-color: var(--light-4);
+}
+
+#topArea {
+    display: flex;
+    width: 100%;
+    flex-grow: 1;
+    padding-bottom: 20px;
+}
+
+#baseArea {
+    display: flex;
+    width: 100%;
+    height: 300px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#columnLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: fit-content;
+    padding: 0px 20px;
+
+    #emailListTitle {
+        align-self: center;
+        font-size: 30px;
+    }
+}
+
+#columnRight {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: calc(50% - 1px);
+    padding: 0px 20px 5px;
+    gap: 20px;
+    flex-grow: 1;
+
+    #rightColLeft {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 10px;
+
+        #templateTitle {
+            align-self: center;
+            font-size: 30px;
+        }
+    };
+    #rightColRight {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        position: relative;
+        #tempEditor {
+            border: 1px solid rgb(43, 43, 43);
+            background-color: var(--dark-1);
+            border-radius: 10px;
+            flex-grow: 1;
+            outline: none;
+            resize: none;
+            padding: 10px;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        };
+        #tempName {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 160px;
+            height: 36px;
+            border-radius: 5px;
+            background-color: var(--light-3);
+            border: 1px solid rgb(43, 43, 43);
+            outline: none;
+            color: white;
+            padding: 0px 5px;
+        };
+        #tempName:not(:disabled) {
+            background-color: var(--light-2);
+        };
+        #tempName:disabled + span {
+            display: block;
+        };
+        #tempSaveBtn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 50px;
+            height: 40px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #448dff;
+            border-radius: 5px;
+            cursor: pointer;
+        };
+        #tempSaveBtn:hover {
+            background-color: #5e9bfc;
+        };
+        #tempSaveBtn:active {
+            background-color: #3f88ff;
+        }
+    }
+}
+
+#templateDropdown {
+    width: 200px;
+    border: 1px solid rgb(43, 43, 43);
+    border-radius: 10px;
+    align-self: center;
+    overflow: hidden;
+}
+
+#tempDropDisplay {
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+#tempDropDisplay:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+#dropdownCarets {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    height: fit-content;
+}
+
+#templateListContainer {
+    display: none;
+    flex-direction: column;
+}
+
+#templateListContainer.active {
+    display: flex;
+}
+
+.template-list-item {
+    display: flex;
+    padding: 10px;
+    border-top: 1px solid rgb(43, 43, 43);
+    user-select: none;
+    cursor: pointer;
+}
+
+.template-list-item:hover {
+    background-color: rgb(30, 30, 30);
+}
+
+.template-list-item:has(> input[type=radio]:checked) {
+    background-color: #448dff;
+}
+
+.template-radio {
+    display: none;
+}
+
+
+
+#sendMailBtn {
+    width: 200px;
+    height: 40px;
+    border: 1px solid rgb(43, 43, 43);
+    background-color: var(--dark-1);
+    border-radius: 10px;
+    align-self: center;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    cursor: pointer;
+}
+
+#sendMailBtn:hover {
+    background-color: var(--light-5);
+}
+
+#sendMailBtn:active {
+    border: 1px solid var(--dark-2);
+    background-color: rgb(40, 40, 40);
+}
+
+.disabled-send {
+    pointer-events: none;
+}
+
+
+
+
+.header-sections {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.btn-header {
+    padding: 5px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid var(--light-5);
+}
+
+.logout-btn {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid var(--light-3);
+    color: var(--light-1);
+    cursor: pointer;
+}
+
+.logout-btn:hover {
+    background-color: var(--light-3);
+}
+
+.logout-btn:active {
+    border: 2px solid var(--light-4);
+    background-color: var(--light-4);
+}
+
+
+
+
+
+
+
+#newEmail {
+    width: 200px;
+    border: 1px solid rgb(43, 43, 43);
+    border-radius: 10px;
+    align-self: center;
+    position: relative;
+    display: flex;
+}
+
+#emailInput {
+    outline: none;
+    width: 200px;
+    height: 40px;
+    padding: 10px;
+    border: 1px solid rgb(43, 43, 43);
+    background-color: var(--lighter);
+    border-radius: 10px;
+    align-self: center;
+}
+
+#addEmailBtn {
+    position: absolute;
+    right: 10px;
+    top: calc(50% - 11px);
+    font-size: 16px;
+    cursor: pointer;
+    color: var(--light-4);
+}
+
+#emailList {
+    width: 200px;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgb(43, 43, 43);
+    border-radius: 10px;
+    margin-top: -10px;
+    overflow: hidden;
+}
+
+.email-item {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    padding: 10px;
+    user-select: none;
+    cursor: pointer;
+}
+
+.email-item:not(:first-of-type) {
+    border-top: 1px solid rgb(43, 43, 43);
+}
+
+.delete-item {
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #bd193e;
+    position: absolute;
+    right: -40px;
+    top: 0;
+    height: 100%;
+    transition: all 0.3s;
+}
+
+.email-item:hover>.delete-item {
+    right: 0;
+    top: 0;
+}
+
+
+
+@media screen and (max-width: 870px) {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    #topArea {
+        flex-direction: row;
+        align-items: center;
+        gap: 20px;
+    }
+    #columnLeft {
+        width: 50%;
+        flex-direction: column;
+    }
+    #columnRight {
+        width: 100%;
+        flex-direction: column;
+    }
+    #tempEditor {
+        height: 500px;
+    }
+  }
+
+@media screen and (max-width: 650px) {
+    body {
+      display: flex;
+      flex-direction: column;
+    }
+    #topArea {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+    #columnLeft {
+        width: 100%;
+        flex-direction: column;
+    }
+    #columnRight {
+        width: 100%;
+        flex-direction: column;
+    }
+    #tempEditor {
+        height: 500px;
+    }
+  }
+
+  @media screen and (max-width: 300px) {
+    #tempEditor {
+        height: 500px;
+    }
+    #tempName {
+        position: relative !important;
+        width: 100% !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        margin-top: 10px !important;
+    }
+    #tempSaveBtn {
+        position: relative !important;
+        width: 100% !important;
+        bottom: 0 !important;
+        right: 0 !important;
+        margin-top: 10px !important;
+    }
+    #footer {
+        justify-content: center;
+    }
+  }
