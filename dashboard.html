@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Security Made Easy</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+    <link rel="stylesheet" href="./css/dashboard.css" />
+</head>
+
+<body>
+    <header id="header">
+        <div class="header-sections"></div>
+        <div class="header-sections">
+            <span id="username">$unsetUser</span>
+            <span class="logout-btn" onclick="logOut()"><i class="fas fa-right-from-bracket"></i></span>
+        </div>
+    </header>
+    <main id="main">
+        <div id="topArea">
+            <section id="columnLeft">
+                <div style="display: flex; flex-direction: column; gap: 20px;">
+                    <span id="emailListTitle">Email List</span>
+
+                    <div id="newEmail"><input type="text" id="emailInput" placeholder="Add items in your list" /><span
+                            id="addEmailBtn" onclick="addEmailItem()"><i class="fas fa-add"></i></span>
+
+                    </div>
+                    <div id="emailList"></div>
+                </div>
+            </section>
+            <section id="columnDivider"></section>
+            <section id="columnRight">
+                <section id="rightColLeft">
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <span id="templateTitle">Template List</span>
+                        <div id="templateDropdown">
+                            <span id="tempDropDisplay" onclick="openCloseTempList()"><span>Select a
+                                    template...</span><span id="dropdownCarets"><i class="fas fa-caret-up"
+                                        style="margin-bottom: -2px;"></i><i class="fas fa-caret-down"
+                                        style="margin-top: -2px;"></i></span></span>
+                            <div id="templateListContainer"></div>
+                        </div>
+                    </div>
+                    <div id="sendMailBtn" class="disabled-send" onclick="sendMailFunc()">Send Emails</div>
+                </section>
+                <section id="rightColRight">
+                    <textarea id="tempEditor"></textarea>
+                    <span>
+                        <input type="text" id="tempName" disabled/>
+                    </span>
+                    <div id="tempSaveBtn" onclick="saveTemplate()"><i class="fas fa-save"></i></div>
+                </section>
+            </section>
+        </div>
+        <section id="baseDivider"></section>
+        <section id="baseArea">
+            <image src="./pieChart.png" style="object-fit: scale-down;"></image>
+            <div style="display: flex; flex-direction: column; gap: 10px; font-weight: 600;">
+                <span style="color: #f8766d;">22% Responded to 1</span>
+                <span style="color: #00ba38;">27% Responded to 2</span>
+                <span style="color: #619cff;">51% Responded to neither</span>
+            </div>
+            <!-- <span style="align-self: center; font-size: 30px; color: rgba(255, 255, 255, 0.3); font-weight: bold;">[Analytics]</span> -->
+        </section>
+    </main>
+    <footer id="footer">
+        <span>Made by team 'Anonymous'</span>
+    </footer>
+
+    <dialog>
+        <span>Add a new email</span>
+        <input/>
+        <input/>
+        <input/>
+        <input/>
+    </dialog>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="./js/dashboard.js"></script>
+</body>
+
+</html>

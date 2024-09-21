@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Security Made Easy</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+        <link rel="stylesheet" href="./css/login.css"/>
+    </head>
+    <body>
+        <main id="main">
+            <span class="input-area">
+                <span class="input-icon"><i class="fas fa-user"></i></span>
+                <input type="text" class="login-input" id="usernameInput" placeholder="Enter your username..." autocomplete="off"/>
+            </span>
+            <span class="input-area">
+                <span class="input-icon"><i class="fas fa-lock"></i></span>
+                <input type="password" class="login-input" id="passwordInput" placeholder="Enter your password..." />
+            </span>
+            <div id="loginBtn" onclick="logIn()">Log In</div>
+        </main>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <script src="./js/login.js"></script>
+    </body>
+</html>
